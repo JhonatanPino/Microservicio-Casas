@@ -1,6 +1,7 @@
 package com.pragma.microserviciocasas.category.domain.model;
 
 import com.pragma.microserviciocasas.category.domain.exceptions.DescriptionMaxSizeExceededException;
+import com.pragma.microserviciocasas.category.domain.exceptions.EmptyFieldException;
 import com.pragma.microserviciocasas.category.domain.exceptions.NameMaxSizeExceededException;
 import com.pragma.microserviciocasas.category.domain.utils.constants.DomainConstants;
 
@@ -13,11 +14,17 @@ public class CategoryModel {
 
     public CategoryModel(Long id, String name, String description) {
         if (name.length() > 50){
-            throw new NameMaxSizeExceededException("Name exceeds maximum size of 50 characters");
+            throw new NameMaxSizeExceededException();
+        }
+        if (name.isEmpty()){
+            throw new EmptyFieldException();
         }
 
         if (description.length() > 90){
-            throw new DescriptionMaxSizeExceededException("Description exceeds maximum size of 90 characters");
+            throw new DescriptionMaxSizeExceededException();
+        }
+        if (description.isEmpty()){
+            throw new EmptyFieldException();
         }
 
         this.id = id;
@@ -39,14 +46,20 @@ public class CategoryModel {
 
     public void setName(String name) {
         if (name.length() > 50){
-            throw new NameMaxSizeExceededException("Name exceeds maximum size of 50 characters");
+            throw new NameMaxSizeExceededException();
+        }
+        if (name.isEmpty()){
+            throw new EmptyFieldException();
         }
         this.name = Objects.requireNonNull(name, DomainConstants.FIELD_NAME_NULL_MESSAGE);
     }
 
     public void setDescription(String description) {
         if (description.length() > 90){
-            throw new DescriptionMaxSizeExceededException("Description exceeds maximum size of 90 characters");
+            throw new DescriptionMaxSizeExceededException();
+        }
+        if (description.isEmpty()){
+            throw new EmptyFieldException();
         }
         this.description = Objects.requireNonNull(description,  DomainConstants.FIELD_DESCRIPTION_NULL_MESSAGE);
     }

@@ -4,12 +4,11 @@ import com.pragma.microserviciocasas.category.application.dto.request.SaveCatego
 import com.pragma.microserviciocasas.category.application.dto.response.CategoryResponse;
 import com.pragma.microserviciocasas.category.application.dto.response.SaveCategoryResponse;
 import com.pragma.microserviciocasas.category.application.services.CategoryService;
+import com.pragma.microserviciocasas.category.domain.utils.PagedResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/category")
@@ -23,9 +22,9 @@ public class CategoryController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<CategoryResponse>> getAllCategories(@RequestParam Integer page,
-                                                                   @RequestParam Integer size,
-                                                                   @RequestParam boolean orderAsc) {
+    public ResponseEntity<PagedResult<CategoryResponse>> getAllCategories(@RequestParam Integer page,
+                                                                          @RequestParam Integer size,
+                                                                          @RequestParam boolean orderAsc) {
         return ResponseEntity.ok(categoryService.getCategories(page, size, orderAsc));
     }
     
