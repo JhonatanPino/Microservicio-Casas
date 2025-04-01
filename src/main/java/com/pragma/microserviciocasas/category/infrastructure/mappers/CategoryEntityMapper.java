@@ -1,6 +1,6 @@
 package com.pragma.microserviciocasas.category.infrastructure.mappers;
 
-import com.pragma.microserviciocasas.category.domain.model.CategoryModel;
+import com.pragma.microserviciocasas.category.domain.models.CategoryModel;
 import com.pragma.microserviciocasas.category.infrastructure.entities.CategoryEntity;
 import org.mapstruct.Mapper;
 

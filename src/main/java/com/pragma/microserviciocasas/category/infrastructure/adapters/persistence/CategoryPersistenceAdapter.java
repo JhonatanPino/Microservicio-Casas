@@ -1,7 +1,7 @@
 package com.pragma.microserviciocasas.category.infrastructure.adapters.persistence;
 
-import com.pragma.microserviciocasas.category.domain.model.CategoryModel;
-import com.pragma.microserviciocasas.category.domain.utils.PagedResult;
+import com.pragma.microserviciocasas.category.domain.models.CategoryModel;
+import com.pragma.microserviciocasas.category.domain.utils.PageResult;
 import com.pragma.microserviciocasas.category.domain.ports.out.CategoryPersistencePort;
 import com.pragma.microserviciocasas.category.infrastructure.entities.CategoryEntity;
 import com.pragma.microserviciocasas.category.infrastructure.mappers.CategoryEntityMapper;
@@ -35,12 +35,18 @@ public class CategoryPersistenceAdapter implements CategoryPersistencePort {
     }
 
     @Override
-    public PagedResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
+    public PageResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
         Pageable pagination;
         if (orderAsc) pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).ascending());
         else pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).descending());
         Page<CategoryEntity> categories = categoryRepository.findAll(pagination);
         List<CategoryModel> categoryModels = categoryEntityMapper.entityListToModelList(categories.getContent());
-        return new PagedResult<>(categoryModels, categories.getNumber(), categories.getSize(), orderAsc, categories.getTotalElements(), categories.getTotalPages());
+        return new PageResult<>( categoryModels,
+                                                    categories.getNumber(),
+                                                    categories.getSize(),
+                                                    orderAsc,
+                                                    categories.getTotalElements(),
+                                                    categories.getTotalPages()
+        );
     }
 }

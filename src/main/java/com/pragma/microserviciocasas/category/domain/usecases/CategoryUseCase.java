@@ -1,8 +1,8 @@
 package com.pragma.microserviciocasas.category.domain.usecases;
 
 import com.pragma.microserviciocasas.category.domain.exceptions.CategoryAlreadyExistsException;
-import com.pragma.microserviciocasas.category.domain.model.CategoryModel;
-import com.pragma.microserviciocasas.category.domain.utils.PagedResult;
+import com.pragma.microserviciocasas.category.domain.models.CategoryModel;
+import com.pragma.microserviciocasas.category.domain.utils.PageResult;
 import com.pragma.microserviciocasas.category.domain.ports.in.CategoryServicePort;
 import com.pragma.microserviciocasas.category.domain.ports.out.CategoryPersistencePort;
 
@@ -24,7 +24,7 @@ public class CategoryUseCase implements CategoryServicePort {
     }
 
     @Override
-    public PagedResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
+    public PageResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
         return categoryPersistencePort.getCategories(page, size, orderAsc);
     }
 }

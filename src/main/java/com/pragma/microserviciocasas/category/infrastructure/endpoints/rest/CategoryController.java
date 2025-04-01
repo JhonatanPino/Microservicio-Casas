@@ -4,7 +4,7 @@ import com.pragma.microserviciocasas.category.application.dto.request.SaveCatego
 import com.pragma.microserviciocasas.category.application.dto.response.CategoryResponse;
 import com.pragma.microserviciocasas.category.application.dto.response.SaveCategoryResponse;
 import com.pragma.microserviciocasas.category.application.services.CategoryService;
-import com.pragma.microserviciocasas.category.domain.utils.PagedResult;
+import com.pragma.microserviciocasas.category.domain.utils.PageResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,9 @@ public class CategoryController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<PagedResult<CategoryResponse>> getAllCategories(@RequestParam Integer page,
-                                                                          @RequestParam Integer size,
-                                                                          @RequestParam boolean orderAsc) {
+    public ResponseEntity<PageResult<CategoryResponse>> getAllCategories(@RequestParam Integer page,
+                                                                         @RequestParam Integer size,
+                                                                         @RequestParam boolean orderAsc) {
         return ResponseEntity.ok(categoryService.getCategories(page, size, orderAsc));
     }
     

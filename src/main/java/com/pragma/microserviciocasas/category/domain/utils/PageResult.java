@@ -2,7 +2,7 @@ package com.pragma.microserviciocasas.category.domain.utils;
 
 import java.util.List;
 
-public class PagedResult<T> {
+public class PageResult<T> {
     private final List<T> content;
     private final int page;
     private final int size;
@@ -10,7 +10,7 @@ public class PagedResult<T> {
     private final long totalElements;
     private final int totalPages;
 
-    public PagedResult(List<T> content, int page, int size, boolean orderAsc, long totalElements, int totalPages) {
+    public PageResult(List<T> content, int page, int size, boolean orderAsc, long totalElements, int totalPages) {
         this.content = content;
         this.page = page;
         this.size = size;

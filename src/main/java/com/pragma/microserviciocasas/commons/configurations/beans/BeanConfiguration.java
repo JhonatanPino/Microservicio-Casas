@@ -1,11 +1,17 @@
 package com.pragma.microserviciocasas.commons.configurations.beans;
 
 import com.pragma.microserviciocasas.category.domain.ports.in.CategoryServicePort;
+import com.pragma.microserviciocasas.category.domain.ports.in.DepartmentServicePort;
 import com.pragma.microserviciocasas.category.domain.ports.out.CategoryPersistencePort;
+import com.pragma.microserviciocasas.category.domain.ports.out.DepartmentPersistencePort;
 import com.pragma.microserviciocasas.category.domain.usecases.CategoryUseCase;
+import com.pragma.microserviciocasas.category.domain.usecases.DepartmentUseCase;
 import com.pragma.microserviciocasas.category.infrastructure.adapters.persistence.CategoryPersistenceAdapter;
+import com.pragma.microserviciocasas.category.infrastructure.adapters.persistence.DepartmentPersistenceAdapter;
 import com.pragma.microserviciocasas.category.infrastructure.mappers.CategoryEntityMapper;
+import com.pragma.microserviciocasas.category.infrastructure.mappers.DepartmentEntityMapper;
 import com.pragma.microserviciocasas.category.infrastructure.repositories.mysql.CategoryRepository;
+import com.pragma.microserviciocasas.category.infrastructure.repositories.mysql.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +21,8 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
     private final CategoryRepository categoryRepository;
     private final CategoryEntityMapper categoryEntityMapper;
+    private final DepartmentRepository departmentRepository;
+    private final DepartmentEntityMapper departmentEntityMapper;
 
     @Bean
     public CategoryServicePort categoryServicePort() {
@@ -24,5 +32,15 @@ public class BeanConfiguration {
     @Bean
     public CategoryPersistencePort categoryPersistencePort() {
         return new CategoryPersistenceAdapter(categoryRepository, categoryEntityMapper);
+    }
+
+    @Bean
+    public DepartmentServicePort departmentServicePort() {
+        return new DepartmentUseCase(departmentPersistencePort());
+    }
+
+    @Bean
+    public DepartmentPersistencePort departmentPersistencePort() {
+        return new DepartmentPersistenceAdapter(departmentRepository, departmentEntityMapper);
     }
 }

@@ -1,7 +1,7 @@
 package com.pragma.microserviciocasas.category.domain.ports.out;
 
-import com.pragma.microserviciocasas.category.domain.model.CategoryModel;
-import com.pragma.microserviciocasas.category.domain.utils.PagedResult;
+import com.pragma.microserviciocasas.category.domain.models.CategoryModel;
+import com.pragma.microserviciocasas.category.domain.utils.PageResult;
 
 public interface CategoryPersistencePort {
 
@@ -9,6 +9,6 @@ public interface CategoryPersistencePort {
 
     CategoryModel getCategoryByName(String categoryName);
 
-    PagedResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc);
+    PageResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc);
 
 }
