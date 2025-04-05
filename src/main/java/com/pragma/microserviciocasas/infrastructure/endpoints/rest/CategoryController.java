@@ -16,9 +16,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.*;
-import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.*;
+import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.CATEGORY_RETRIEVED;
+import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.SAVE_CATEGORY_RESPONSE_MESSAGE;
+import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.CATEGORY_EXISTS_EXCEPTION;
+import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.INVALID_PAGE_OR_SIZE;
 
 @RestController
 @RequestMapping("/api/v1/category")
