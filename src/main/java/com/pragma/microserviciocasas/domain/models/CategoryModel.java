@@ -13,9 +13,6 @@ public class CategoryModel {
     private String name;
     private String description;
 
-    public CategoryModel() {
-    }
-
     public CategoryModel(Long id, String name, String description) {
         if (name.length() > FIELD_NAME_MAX_SIZE){
             throw new CategoryNameMaxSizeExceededException();

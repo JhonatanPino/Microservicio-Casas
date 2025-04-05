@@ -1,6 +1,7 @@
 package com.pragma.microserviciocasas.domain.usecases;
 
 import com.pragma.microserviciocasas.domain.exceptions.CategoryAlreadyExistsException;
+import com.pragma.microserviciocasas.domain.exceptions.InvalidPageOrSizeException;
 import com.pragma.microserviciocasas.domain.models.CategoryModel;
 import com.pragma.microserviciocasas.domain.ports.out.CategoryPersistencePort;
 import com.pragma.microserviciocasas.domain.utils.PageResult;
@@ -30,7 +31,7 @@ class CategoryUseCaseTest {
 
     @BeforeEach
     void setUp() {
-        categoryModel = new CategoryModel();
+        categoryModel = new CategoryModel(1L, "Test Category", "Test Description");
         categoryModel.setName("Test Category");
     }
 
@@ -51,8 +52,9 @@ class CategoryUseCaseTest {
 
         verify(categoryPersistencePort, never()).saveCategory(categoryModel);
     }
+
     @Test
-    void listCategories_shouldReturnPage_whenCalledWithAscendingOrder() {
+    void getCategories_shouldReturnPageResult_whenValidPageAndSize() {
         int page = 0;
         int size = 10;
         boolean orderAsc = true;
@@ -71,21 +73,22 @@ class CategoryUseCaseTest {
     }
 
     @Test
-    void listCategories_shouldReturnPage_whenCalledWithDescendingOrder() {
-        int page = 0;
+    void getCategories_shouldThrowInvalidPageOrSizeException_whenInvalidPage() {
+        int page = -1;
         int size = 10;
-        boolean orderAsc = false;
-        List<CategoryModel> categories = Arrays.asList(
-                new CategoryModel(2L, "Category B", "Description B"),
-                new CategoryModel(1L, "Category A", "Description A")
-        );
-        PageResult<CategoryModel> expectedPage = new PageResult<>(categories, 2, 1, true, 10, 2);
+        boolean orderAsc = true;
 
-        when(categoryPersistencePort.getCategories(page, size, orderAsc)).thenReturn(expectedPage);
+        assertThrows(InvalidPageOrSizeException.class, () -> categoryUseCase.getCategories(page, size, orderAsc));
+        verify(categoryPersistencePort, never()).getCategories(anyInt(), anyInt(), anyBoolean());
+    }
 
-        PageResult<CategoryModel> actualPage = categoryUseCase.getCategories(page, size, orderAsc);
+    @Test
+    void getCategories_shouldThrowInvalidPageOrSizeException_whenInvalidSize() {
+        int page = 0;
+        int size = 0;
+        boolean orderAsc = true;
 
-        assertEquals(expectedPage, actualPage);
-        verify(categoryPersistencePort, times(1)).getCategories(page, size, orderAsc);
+        assertThrows(InvalidPageOrSizeException.class, () -> categoryUseCase.getCategories(page, size, orderAsc));
+        verify(categoryPersistencePort, never()).getCategories(anyInt(), anyInt(), anyBoolean());
     }
 }

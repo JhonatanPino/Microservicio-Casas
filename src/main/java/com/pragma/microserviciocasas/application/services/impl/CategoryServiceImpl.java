@@ -33,7 +33,8 @@ public class CategoryServiceImpl implements CategoryService {
 
 
 
-/*La clase CategoryServiceImpl es una implementación de servicio en una aplicación Spring Boot. Implementa la interfaz CategoryService y proporciona
+/*
+La clase CategoryServiceImpl es una implementación de servicio en una aplicación Spring Boot. Implementa la interfaz CategoryService y proporciona
  la lógica de negocio para gestionar las operaciones relacionadas con categorías. A continuación, se detallan sus componentes:
 Anotaciones:
 @Service: Indica que esta clase es un componente de servicio de Spring.

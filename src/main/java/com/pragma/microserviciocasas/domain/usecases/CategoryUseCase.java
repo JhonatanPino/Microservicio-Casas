@@ -1,6 +1,7 @@
 package com.pragma.microserviciocasas.domain.usecases;
 
 import com.pragma.microserviciocasas.domain.exceptions.CategoryAlreadyExistsException;
+import com.pragma.microserviciocasas.domain.exceptions.InvalidPageOrSizeException;
 import com.pragma.microserviciocasas.domain.models.CategoryModel;
 import com.pragma.microserviciocasas.domain.utils.PageResult;
 import com.pragma.microserviciocasas.domain.ports.in.CategoryServicePort;
@@ -25,9 +26,15 @@ public class CategoryUseCase implements CategoryServicePort {
 
     @Override
     public PageResult<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
+
+        if (page < 0 || size <= 0) {
+            throw new InvalidPageOrSizeException();
+        }
         return categoryPersistencePort.getCategories(page, size, orderAsc);
     }
 }
+
+
 
 /*
 La clase CategoryUseCase es una implementación de la interfaz CategoryServicePort en una aplicación Spring Boot.
