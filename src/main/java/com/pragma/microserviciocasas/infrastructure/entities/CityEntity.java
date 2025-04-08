@@ -1,12 +1,12 @@
 package com.pragma.microserviciocasas.infrastructure.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,5 +18,12 @@ public class CityEntity {
     private Long id;
     private String name;
     private String description;
-    //private Long departmentId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private DepartmentEntity department;
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private Set<LocationEntity> locations = new HashSet<>();
+
 }

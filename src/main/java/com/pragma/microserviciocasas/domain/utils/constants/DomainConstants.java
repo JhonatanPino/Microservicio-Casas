@@ -9,5 +9,7 @@ public class DomainConstants {
     public static final Integer CATEGORY_FIELD_DESCRIPTION_MAX_SIZE = 90;
 
     // Localization validation messages
+    public static final String FIELD_SECTOR_NULL_MESSAGE = "Field 'sector' can not be null";
+    public static final String FIELD_CITY_NULL_MESSAGE = "Field 'city' can not be null";
     public static final Integer FIELD_DESCRIPTION_MAX_SIZE = 120;
 }

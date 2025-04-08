@@ -17,14 +17,14 @@ public class DepartmentModel {
         if (name.length() > FIELD_NAME_MAX_SIZE){
             throw new DepartmentNameMaxSizeExceededException();
         }
-        if (name.isEmpty()){
+        if (name.isBlank()){
             throw new EmptyFieldException();
         }
 
         if (description.length() > FIELD_DESCRIPTION_MAX_SIZE){
             throw new DepartmentDescriptionMaxSizeExceededException();
         }
-        if (description.isEmpty()){
+        if (description.isBlank()){
             throw new EmptyFieldException();
         }
 
@@ -49,7 +49,7 @@ public class DepartmentModel {
         if (name.length() > FIELD_NAME_MAX_SIZE){
             throw new DepartmentNameMaxSizeExceededException();
         }
-        if (name.isEmpty()){
+        if (name.isBlank()){
             throw new EmptyFieldException();
         }
         this.name = Objects.requireNonNull(name, DomainConstants.FIELD_NAME_NULL_MESSAGE);
@@ -59,7 +59,7 @@ public class DepartmentModel {
         if (description.length() > FIELD_DESCRIPTION_MAX_SIZE){
             throw new DepartmentDescriptionMaxSizeExceededException();
         }
-        if (description.isEmpty()){
+        if (description.isBlank()){
             throw new EmptyFieldException();
         }
         this.description = Objects.requireNonNull(description,  DomainConstants.FIELD_DESCRIPTION_NULL_MESSAGE);

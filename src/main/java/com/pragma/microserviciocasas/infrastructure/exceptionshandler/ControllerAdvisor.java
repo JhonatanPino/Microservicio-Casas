@@ -16,22 +16,14 @@ public class ControllerAdvisor {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CATEGORY_EXISTS_EXCEPTION,
                 LocalDateTime.now()));
     }
-
     @ExceptionHandler(CategoryNameMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleNameMaxSizeExceededException(CategoryNameMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CATEGORY_NAME_MAX_SIZE_MESSAGE,
                 LocalDateTime.now()));
     }
-
     @ExceptionHandler(CategoryDescriptionMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleDescriptionMaxSizeExceededException(CategoryDescriptionMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CATEGORY_DESCRIPTION_MAX_SIZE_MESSAGE,
-                LocalDateTime.now()));
-    }
-
-    @ExceptionHandler(InvalidPageOrSizeException.class)
-    public ResponseEntity<ExceptionResponse> handleInvalidPageOrSize(InvalidPageOrSizeException exception) {
-        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.INVALID_PAGE_OR_SIZE,
                 LocalDateTime.now()));
     }
 
@@ -41,13 +33,11 @@ public class ControllerAdvisor {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.DEPARTMENT_EXISTS_EXCEPTION,
                 LocalDateTime.now()));
     }
-
     @ExceptionHandler(DepartmentNameMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleDepartmentNameMaxSizeExceededException(DepartmentNameMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.DEPARTMENT_NAME_MAX_SIZE_MESSAGE,
                 LocalDateTime.now()));
     }
-
     @ExceptionHandler(DepartmentDescriptionMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleDepartmentDescriptionMaxSizeExceededException(DepartmentDescriptionMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.DEPARTMENT_DESCRIPTION_MAX_SIZE_MESSAGE,
@@ -60,13 +50,11 @@ public class ControllerAdvisor {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CITY_EXISTS_EXCEPTION,
                 LocalDateTime.now()));
     }
-
     @ExceptionHandler(CityNameMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleCityNameMaxSizeExceededException(CityNameMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CITY_NAME_MAX_SIZE_MESSAGE,
                 LocalDateTime.now()));
     }
-
     @ExceptionHandler(CityDescriptionMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleCityDescriptionMaxSizeExceededException(CityDescriptionMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CITY_DESCRIPTION_MAX_SIZE_MESSAGE,
@@ -74,9 +62,19 @@ public class ControllerAdvisor {
     }
 
     // General
+    @ExceptionHandler(InvalidPageOrSizeException.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidPageOrSize(InvalidPageOrSizeException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.INVALID_PAGE_OR_SIZE,
+                LocalDateTime.now()));
+    }
     @ExceptionHandler(EmptyFieldException.class)
     public ResponseEntity<ExceptionResponse> handleEmptyFieldException(EmptyFieldException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.FIELD_CANNOT_EMPTY_MESSAGE,
+                LocalDateTime.now()));
+    }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ExceptionResponse> handleIllegalArgumentException(IdCannotBeNullException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.ID_CANNOT_BE_NULL_MESSAGE,
                 LocalDateTime.now()));
     }
 

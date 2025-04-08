@@ -18,6 +18,7 @@ public class DepartmentEntity {
     private Long id;
     private String name;
     private String description;
+
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     private Set<CityEntity> cities = new HashSet<>();
 }

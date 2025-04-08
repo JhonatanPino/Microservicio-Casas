@@ -10,6 +10,7 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CategoryDtoMapper {
+
     CategoryModel requestToModel(SaveCategoryRequest saveCategoryRequest);
 
     CategoryResponse modelToResponse(CategoryModel categoryModel);
