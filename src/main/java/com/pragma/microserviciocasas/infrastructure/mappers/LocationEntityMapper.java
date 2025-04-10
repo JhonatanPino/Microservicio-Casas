@@ -8,7 +8,10 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface LocationEntityMapper {
+
      LocationEntity modelToEntity(LocationModel locationModel);
+
      LocationModel entityToModel(LocationEntity locationEntity);
-     List<LocationModel> entityListToModelList(List<LocationEntity> locations);
+
+     //List<LocationModel> entityListToModelList(List<LocationEntity> locations);
 }

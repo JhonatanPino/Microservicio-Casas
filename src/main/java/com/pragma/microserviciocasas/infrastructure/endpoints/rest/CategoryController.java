@@ -16,33 +16,37 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.CATEGORY_RETRIEVED;
 import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.SAVE_CATEGORY_RESPONSE_MESSAGE;
+import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.STATUS_BAD_REQUEST;
+import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.STATUS_CREATE;
+import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.STATUS_OK;
 import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.CATEGORY_EXISTS_EXCEPTION;
 import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.INVALID_PAGE_OR_SIZE;
 
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;
 
     @Operation(summary = "Save a new category")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = SAVE_CATEGORY_RESPONSE_MESSAGE),
-            @ApiResponse(responseCode = "400", description = CATEGORY_EXISTS_EXCEPTION,
+            @ApiResponse(responseCode = STATUS_CREATE, description = SAVE_CATEGORY_RESPONSE_MESSAGE),
+            @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = CATEGORY_EXISTS_EXCEPTION,
                     content = @Content(schema = @Schema(implementation = CategoryAlreadyExistsException.class))),
     })
     @PostMapping("/")
-    public ResponseEntity<SaveCategoryResponse> save(@RequestBody SaveCategoryRequest saveCategoryRequest) {
+    public ResponseEntity<SaveCategoryResponse> createCategory(@RequestBody SaveCategoryRequest saveCategoryRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.saveCategory(saveCategoryRequest));
     }
 
     @Operation(summary = "Get all categories")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = CATEGORY_RETRIEVED,
+            @ApiResponse(responseCode = STATUS_OK, description = CATEGORY_RETRIEVED,
                     content = @Content(schema = @Schema(implementation = PageResult.class))),
-            @ApiResponse(responseCode = "400", description = INVALID_PAGE_OR_SIZE,
+            @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = INVALID_PAGE_OR_SIZE,
                     content = @Content(schema = @Schema(implementation = InvalidPageOrSizeException.class))),
     })
     @GetMapping("/")

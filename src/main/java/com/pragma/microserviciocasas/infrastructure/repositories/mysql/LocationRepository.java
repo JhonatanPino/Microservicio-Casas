@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface LocationRepository extends JpaRepository<LocationEntity, Long> {
 
-     Optional<LocationEntity> findBySector(String sector);
+     Optional<LocationEntity> findById(Long id);
 
      //Page<LocationEntity> findAll(Pageable pageable);
 }

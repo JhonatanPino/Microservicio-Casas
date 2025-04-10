@@ -25,17 +25,17 @@ public class SwaggerConfig {
 
     @Bean
     public GroupedOpenApi categoryApi() {
-        return GroupedOpenApi.builder().group("category")
+        return GroupedOpenApi.builder().group("categories")
                 .packagesToScan("com.pragma.microserviciocasas.infrastructure.endpoints.rest") // Escanea el paquete de CategoryController
                 .build();
     }
-    /*
+
     @Bean
     public GroupedOpenApi locationApi() {
-        return GroupedOpenApi.builder().group("location")
+        return GroupedOpenApi.builder().group("locations")
                 .packagesToScan("com.pragma.microserviciocasas.infrastructure.endpoints.rest") // Escanea el paquete de LocationController
                 .build();
     }
-    */
+
 
 }

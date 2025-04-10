@@ -61,6 +61,13 @@ public class ControllerAdvisor {
                 LocalDateTime.now()));
     }
 
+    //Location
+    @ExceptionHandler(LocationSectorMaxSizeExceededException.class)
+    public ResponseEntity<ExceptionResponse> handleLocationSectorMaxSizeExceededException(LocationSectorMaxSizeExceededException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.LOCATION_SECTOR_MAX_SIZE_MESSAGE,
+                LocalDateTime.now()));
+    }
+
     // General
     @ExceptionHandler(InvalidPageOrSizeException.class)
     public ResponseEntity<ExceptionResponse> handleInvalidPageOrSize(InvalidPageOrSizeException exception) {

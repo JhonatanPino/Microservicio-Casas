@@ -3,7 +3,7 @@ package com.pragma.microserviciocasas.domain.ports.out;
 import com.pragma.microserviciocasas.domain.models.CategoryModel;
 import com.pragma.microserviciocasas.domain.utils.PageResult;
 
-public interface CategoryPersistencePort {
+public interface  CategoryPersistencePort {
 
     void saveCategory(CategoryModel categoryModel);
 
