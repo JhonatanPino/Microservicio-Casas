@@ -13,14 +13,14 @@ import org.mapstruct.Mapping;
 public interface LocationDtoMapper {
 
     @Mapping(target = "city.id", source = "idCity")
+    LocationModel requestToModel(SaveLocationRequest saveLocationRequest);
+
+    /*@Mapping(target = "city.id", source = "idCity")
     LocationEntity requestToEntity(SaveLocationRequest request);
 
     @Mapping(target = "cityName", source = "city.name")
     @Mapping(target = "departmentName", source = "city.department.name")
     LocationResponse entityToResponse(LocationEntity entity);
 
-    @Mapping(target = "city.id", source = "idCity")
-    LocationModel requestToModel(SaveLocationRequest saveLocationRequest);
-
-    LocationResponse modelToResponse(LocationModel locationModel);
+    LocationResponse modelToResponse(LocationModel locationModel);*/
 }

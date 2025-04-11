@@ -1,12 +1,17 @@
 package com.pragma.microserviciocasas.infrastructure.mappers;
 
+import com.pragma.microserviciocasas.domain.models.DepartmentModel;
+import com.pragma.microserviciocasas.infrastructure.entities.DepartmentEntity;
 import org.mapstruct.Mapper;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface DepartmentEntityMapper {
-    // Define methods for mapping between DepartmentEntity and DepartmentModel
-    // For example:
-    // DepartmentEntity modelToEntity(DepartmentModel departmentModel);
-    // DepartmentModel entityToModel(DepartmentEntity departmentEntity);
-    // List<DepartmentModel> entityListToModelList(List<DepartmentEntity> departments);
+
+    DepartmentEntity modelToEntity(DepartmentModel departmentModel);
+
+    DepartmentModel entityToModel(DepartmentEntity departmentEntity);
+
+    //List<DepartmentModel> entityListToModelList(List<DepartmentEntity> departments);
 }

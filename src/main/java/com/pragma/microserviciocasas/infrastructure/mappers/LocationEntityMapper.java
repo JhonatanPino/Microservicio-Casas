@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {DepartmentEntityMapper.class})
 public interface LocationEntityMapper {
 
      LocationEntity modelToEntity(LocationModel locationModel);
@@ -15,3 +15,11 @@ public interface LocationEntityMapper {
 
      //List<LocationModel> entityListToModelList(List<LocationEntity> locations);
 }
+
+
+
+/*
+uses: Se utiliza para indicar que LocationEntityMapper debe usar DepartmentEntityMapper para mapear las propiedades
+ relacionadas con DepartmentModel y DepartmentEntity.
+Mapeo explícito: Ahora MapStruct sabrá cómo manejar la conversión de DepartmentModel a DepartmentEntity y viceversa.
+ */

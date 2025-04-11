@@ -33,6 +33,8 @@ public class CityModel {
         this.description = Objects.requireNonNull(description,  DomainConstants.CITY_FIELD_DESCRIPTION_NULL_MESSAGE);
         this.department = Objects.requireNonNull(department, DomainConstants.CITY_FIELD_DEPARTMENT_NULL_MESSAGE);
     }
+    public CityModel() {
+    }
 
     public Long getId() {
         return id;
@@ -70,5 +72,9 @@ public class CityModel {
 
     public void setDepartment(DepartmentModel department) {
         this.department = Objects.requireNonNull(department, DomainConstants.CITY_FIELD_DEPARTMENT_NULL_MESSAGE);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

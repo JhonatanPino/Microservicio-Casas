@@ -20,6 +20,6 @@ public record SaveLocationRequest(String sector, Long idCity) {
         }
     }
 
-    public Long getIdCity() { return idCity; }
+    //public Long getIdCity() { return idCity; }
 
 }

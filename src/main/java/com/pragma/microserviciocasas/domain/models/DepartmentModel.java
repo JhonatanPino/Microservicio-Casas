@@ -33,6 +33,10 @@ public class DepartmentModel {
         this.description = Objects.requireNonNull(description,  DomainConstants.DEPARTMENT_FIELD_DESCRIPTION_NULL_MESSAGE);
     }
 
+    public DepartmentModel() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -63,5 +67,9 @@ public class DepartmentModel {
             throw new EmptyFieldException();
         }
         this.description = Objects.requireNonNull(description,  DomainConstants.DEPARTMENT_FIELD_DESCRIPTION_NULL_MESSAGE);
+    }
+
+    public void setId(Long id) {
+
     }
 }

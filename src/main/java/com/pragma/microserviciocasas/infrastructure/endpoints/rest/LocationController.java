@@ -23,4 +23,5 @@ public class LocationController {
     public ResponseEntity<SaveLocationResponse> createLocation(@RequestBody SaveLocationRequest saveLocationRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(locationService.saveLocation(saveLocationRequest));
     }
+
 }

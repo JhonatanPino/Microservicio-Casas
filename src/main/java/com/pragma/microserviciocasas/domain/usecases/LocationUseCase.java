@@ -13,17 +13,15 @@ public class LocationUseCase implements LocationServicePort {
 
     @Override
     public void saveLocation(LocationModel locationModel) {
+        if (locationModel == null) {
+            throw new IllegalArgumentException("El modelo de ubicación no puede ser nulo");
+        }
+        if (locationModel.getCity() == null || locationModel.getCity().getId() == null) {
+            throw new IllegalArgumentException("La ubicación debe estar asociada a una ciudad válida");
+        }
 
         locationPersistencePort.saveLocation(locationModel);
     }
 
 }
 
-// Aquí puedes agregar la lógica de negocio relacionada con las ubicaciones.
-// Por ejemplo, podrías implementar métodos para guardar, actualizar o eliminar ubicaciones.
-// También podrías implementar métodos para obtener ubicaciones por diferentes criterios.
-
-// Ejemplo de un método que podría estar aquí:
-// public LocationModel getLocationById(Long id) {
-//     return locationPersistencePort.getLocationById(id);
-// }
