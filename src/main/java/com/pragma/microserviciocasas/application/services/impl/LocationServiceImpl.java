@@ -19,7 +19,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public SaveLocationResponse saveLocation(SaveLocationRequest request) {
-        locationServicePort.saveLocation(locationDtoMapper.requestToModel(request));  //
+        locationServicePort.saveLocation(locationDtoMapper.requestToModel(request));
         return new SaveLocationResponse(Constants.SAVE_LOCATION_RESPONSE_MESSAGE, LocalDateTime.now());
     }
 

@@ -20,6 +20,11 @@ public class LocationPersistenceAdapter implements LocationPersistencePort {
         locationRepository.save(locationEntityMapper.modelToEntity(locationModel));
     }
 
+    @Override
+    public boolean existsBySectorAndCityId(String sector, Long idCity) {
+        return locationRepository.existsBySectorAndCity_Id(sector, idCity);
+    }
+
     /*@Override
     public LocationModel getLocationById(Long id) {
         return locationEntityMapper.entityToModel(locationRepository.findById(id).orElse(null));

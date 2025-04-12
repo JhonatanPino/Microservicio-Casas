@@ -70,6 +70,6 @@ public class DepartmentModel {
     }
 
     public void setId(Long id) {
-
+        this.id = id;
     }
 }

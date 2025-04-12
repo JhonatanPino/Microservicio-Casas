@@ -25,12 +25,12 @@ class CategoryModelTest {
 
     @Test
     void testNameExceedsMaxSize() {
-        String longName = "a".repeat(DomainConstants.FIELD_NAME_MAX_SIZE + 1);
+        String longName = "a".repeat(DomainConstants.CATEGORY_FIELD_NAME_MAX_SIZE + 1);
         assertThrows(CategoryNameMaxSizeExceededException.class, () -> new CategoryModel(1L, longName, "Description"));
     }
 
     @Test
-    void testNameIsEmpty() {
+    void testNameIsBlank() {
         assertThrows(EmptyFieldException.class, () -> new CategoryModel(1L, "", "Description"));
     }
 
@@ -41,19 +41,19 @@ class CategoryModelTest {
     }
 
     @Test
-    void testDescriptionIsEmpty() {
+    void testDescriptionIsBlank() {
         assertThrows(EmptyFieldException.class, () -> new CategoryModel(1L, "Name", ""));
     }
 
     @Test
     void testSetNameExceedsMaxSize() {
         CategoryModel categoryModel = new CategoryModel(1L, "Name", "Description");
-        String longName = "a".repeat(DomainConstants.FIELD_NAME_MAX_SIZE + 1);
+        String longName = "a".repeat(DomainConstants.CATEGORY_FIELD_NAME_MAX_SIZE + 1);
         assertThrows(CategoryNameMaxSizeExceededException.class, () -> categoryModel.setName(longName));
     }
 
     @Test
-    void testSetNameIsEmpty() {
+    void testSetNameIsBlank() {
         CategoryModel categoryModel = new CategoryModel(1L, "Name", "Description");
         assertThrows(EmptyFieldException.class, () -> categoryModel.setName(""));
     }
@@ -66,7 +66,7 @@ class CategoryModelTest {
     }
 
     @Test
-    void testSetDescriptionIsEmpty() {
+    void testSetDescriptionIsBlank() {
         CategoryModel categoryModel = new CategoryModel(1L, "Name", "Description");
         assertThrows(EmptyFieldException.class, () -> categoryModel.setDescription(""));
     }

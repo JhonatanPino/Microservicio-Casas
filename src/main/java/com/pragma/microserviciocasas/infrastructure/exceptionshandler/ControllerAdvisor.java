@@ -1,5 +1,8 @@
 package com.pragma.microserviciocasas.infrastructure.exceptionshandler;
 
+import com.pragma.microserviciocasas.application.exceptionsdto.CityAlreadyExistsException;
+import com.pragma.microserviciocasas.application.exceptionsdto.DepartmentAlreadyExistsException;
+import com.pragma.microserviciocasas.application.exceptionsdto.IdCannotBeNullException;
 import com.pragma.microserviciocasas.domain.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -65,6 +68,11 @@ public class ControllerAdvisor {
     @ExceptionHandler(LocationSectorMaxSizeExceededException.class)
     public ResponseEntity<ExceptionResponse> handleLocationSectorMaxSizeExceededException(LocationSectorMaxSizeExceededException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.LOCATION_SECTOR_MAX_SIZE_MESSAGE,
+                LocalDateTime.now()));
+    }
+    @ExceptionHandler(LocationAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleLocationAlreadyExistsException(LocationAlreadyExistsException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.LOCATION_EXISTS_EXCEPTION,
                 LocalDateTime.now()));
     }
 

@@ -16,7 +16,7 @@ public class LocationEntity {
     private String sector;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "city_id", nullable = false)
     private CityEntity city;
 
 }

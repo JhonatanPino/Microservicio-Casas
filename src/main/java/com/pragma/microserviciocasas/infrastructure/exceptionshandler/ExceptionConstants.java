@@ -19,7 +19,7 @@ public final class ExceptionConstants {
 
     //Location
     public static final String LOCATION_SECTOR_MAX_SIZE_MESSAGE = "The sector of the location can not exceed 50 characters";
-
+    public static final String LOCATION_EXISTS_EXCEPTION = "The location already exists";
     // General
     public static final String INVALID_PAGE_OR_SIZE = "Page and size must be greater than or equal to 0";
     public static final String FIELD_CANNOT_EMPTY_MESSAGE = "The field cannot be empty";

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface LocationRepository extends JpaRepository<LocationEntity, Long> {
 
-     Optional<LocationEntity> findById(Long id);
+    boolean existsBySectorAndCity_Id(String sector, Long idCity);
 
-     //Page<LocationEntity> findAll(Pageable pageable);
+    //Page<LocationEntity> findAll(Pageable pageable);
 }

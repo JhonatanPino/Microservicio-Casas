@@ -1,4 +1,4 @@
-package com.pragma.microserviciocasas.domain.exceptions;
+package com.pragma.microserviciocasas.application.exceptionsdto;
 
 public class IdCannotBeNullException extends RuntimeException {
     public IdCannotBeNullException() {
