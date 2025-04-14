@@ -4,8 +4,7 @@ import com.pragma.microserviciocasas.application.dto.request.SaveCategoryRequest
 import com.pragma.microserviciocasas.application.dto.response.CategoryResponse;
 import com.pragma.microserviciocasas.application.dto.response.SaveCategoryResponse;
 import com.pragma.microserviciocasas.application.services.CategoryService;
-import com.pragma.microserviciocasas.domain.exceptions.CategoryAlreadyExistsException;
-import com.pragma.microserviciocasas.domain.exceptions.InvalidPageOrSizeException;
+import com.pragma.microserviciocasas.domain.exceptions.*;
 import com.pragma.microserviciocasas.domain.utils.PageResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,8 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.*;
-import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.CATEGORY_EXISTS_EXCEPTION;
-import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.INVALID_PAGE_OR_SIZE;
+import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.*;
 
 @RestController
 @RequestMapping("/api/v1/categories")
@@ -32,6 +30,12 @@ public class CategoryController {
             @ApiResponse(responseCode = STATUS_CREATE, description = SAVE_CATEGORY_RESPONSE_MESSAGE),
             @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = CATEGORY_EXISTS_EXCEPTION,
                     content = @Content(schema = @Schema(implementation = CategoryAlreadyExistsException.class))),
+            @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = CATEGORY_NAME_MAX_SIZE_MESSAGE,
+                    content = @Content(schema = @Schema(implementation = CategoryNameMaxSizeExceededException.class))),
+            @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = CATEGORY_DESCRIPTION_MAX_SIZE_MESSAGE,
+                    content = @Content(schema = @Schema(implementation = CategoryDescriptionMaxSizeExceededException.class))),
+            @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = FIELD_CANNOT_EMPTY_MESSAGE,
+                    content = @Content(schema = @Schema(implementation = EmptyFieldException.class))),
     })
     @PostMapping("/")
     public ResponseEntity<SaveCategoryResponse> createCategory(@RequestBody SaveCategoryRequest saveCategoryRequest) {

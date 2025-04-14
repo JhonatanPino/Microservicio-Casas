@@ -18,7 +18,7 @@ public final class ExceptionConstants {
     public static final String CITY_DESCRIPTION_MAX_SIZE_MESSAGE = "The description of the city can not exceed 120 characters";
 
     //Location
-    public static final String LOCATION_SECTOR_MAX_SIZE_MESSAGE = "The sector of the location can not exceed 50 characters";
+    public static final String LOCATION_SECTOR_MAX_SIZE_MESSAGE = "The sector of the location can not exceed 60 characters";
     public static final String LOCATION_EXISTS_EXCEPTION = "The location already exists";
     // General
     public static final String INVALID_PAGE_OR_SIZE = "Page and size must be greater than or equal to 0";

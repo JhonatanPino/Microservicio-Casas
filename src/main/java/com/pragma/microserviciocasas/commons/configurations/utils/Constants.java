@@ -12,6 +12,7 @@ public final class Constants {
 
     //Documentation Swagger
     public static final String CATEGORY_RETRIEVED = "Categories retrieved successfully";
+    public static final String LOCATION_RETRIEVED = "Locations retrieved successfully";
     public static final String STATUS_CREATE = "201";
     public static final String STATUS_OK = "200";
     public static final String STATUS_BAD_REQUEST = "400";

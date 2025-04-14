@@ -24,5 +24,5 @@ public class DomainConstants {
     // Location validation messages
     public static final String LOCATION_FIELD_SECTOR_NULL_MESSAGE = "Field 'sector' of location can not be null";
     public static final String LOCATION_FIELD_CITY_NULL_MESSAGE = "Field 'city' of location can not be null";
-    public static final Integer LOCATION_FIELD_SECTOR_MAX_SIZE = 50;
+    public static final Integer LOCATION_FIELD_SECTOR_MAX_SIZE = 60;
 }

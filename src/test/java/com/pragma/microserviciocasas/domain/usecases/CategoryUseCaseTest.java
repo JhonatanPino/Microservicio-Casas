@@ -15,8 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -37,17 +36,22 @@ class CategoryUseCaseTest {
 
     @Test
     void save_shouldSaveCategory_whenCategoryDoesNotExist() {
+        // Arrange
         when(categoryPersistencePort.getCategoryByName(categoryModel.getName())).thenReturn(null);
 
+        // Act
         categoryUseCase.saveCategory(categoryModel);
 
+        // Assert
         verify(categoryPersistencePort, times(1)).saveCategory(categoryModel);
     }
 
     @Test
     void save_shouldThrowException_whenCategoryAlreadyExists() {
+        // Arrange
         when(categoryPersistencePort.getCategoryByName(categoryModel.getName())).thenReturn(categoryModel);
 
+        // Act & Assert
         assertThrows(CategoryAlreadyExistsException.class, () -> categoryUseCase.saveCategory(categoryModel));
 
         verify(categoryPersistencePort, never()).saveCategory(categoryModel);
@@ -55,6 +59,7 @@ class CategoryUseCaseTest {
 
     @Test
     void getCategories_shouldReturnPageResult_whenValidPageAndSize() {
+        // Arrange
         int page = 0;
         int size = 10;
         boolean orderAsc = true;
@@ -66,28 +71,34 @@ class CategoryUseCaseTest {
 
         when(categoryPersistencePort.getCategories(page, size, orderAsc)).thenReturn(expectedPage);
 
+        // Act
         PageResult<CategoryModel> actualPage = categoryUseCase.getCategories(page, size, orderAsc);
 
+        // Assert
         assertEquals(expectedPage, actualPage);
         verify(categoryPersistencePort, times(1)).getCategories(page, size, orderAsc);
     }
 
     @Test
     void getCategories_shouldThrowInvalidPageOrSizeException_whenInvalidPage() {
+        // Arrange
         int page = -1;
         int size = 10;
         boolean orderAsc = true;
 
+        // Act & Assert
         assertThrows(InvalidPageOrSizeException.class, () -> categoryUseCase.getCategories(page, size, orderAsc));
         verify(categoryPersistencePort, never()).getCategories(anyInt(), anyInt(), anyBoolean());
     }
 
     @Test
     void getCategories_shouldThrowInvalidPageOrSizeException_whenInvalidSize() {
+        // Arrange
         int page = 0;
         int size = 0;
         boolean orderAsc = true;
 
+        // Act & Assert
         assertThrows(InvalidPageOrSizeException.class, () -> categoryUseCase.getCategories(page, size, orderAsc));
         verify(categoryPersistencePort, never()).getCategories(anyInt(), anyInt(), anyBoolean());
     }
