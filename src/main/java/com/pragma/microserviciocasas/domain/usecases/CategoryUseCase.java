@@ -33,23 +33,3 @@ public class CategoryUseCase implements CategoryServicePort {
         return categoryPersistencePort.getCategories(page, size, orderAsc);
     }
 }
-
-
-
-/*
-La clase CategoryUseCase es una implementación de la interfaz CategoryServicePort en una aplicación Spring Boot.
- Esta clase contiene la lógica de negocio para gestionar las operaciones relacionadas con las categorías.
-  A continuación, se detallan sus componentes:
-Campos:
-CategoryPersistencePort categoryPersistencePort: Una interfaz de puerto para operaciones de persistencia relacionadas con categorías.
-Constructor:
-CategoryUseCase(CategoryPersistencePort categoryPersistencePort): Inicializa el campo categoryPersistencePort
- con la implementación proporcionada.
-Métodos:
- saveCategory(CategoryModel categoryModel): Este método guarda un modelo de categoría. Primero, verifica si una categoría
- con el mismo nombre ya existe llamando a getCategoryByName en categoryPersistencePort. Si la categoría ya existe,
-  lanza una excepción CategoryAlreadyExistsException. Si no, guarda la nueva categoría llamando a saveCategory en categoryPersistencePort.
-getCategories(Integer page, Integer size, boolean orderAsc): Este método recupera una lista paginada de categorías
- llamando a getCategories en categoryPersistencePort y devuelve el resultado.
-
- */

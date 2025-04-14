@@ -6,6 +6,9 @@ public final class Constants {
     public static final String SAVE_CATEGORY_RESPONSE_MESSAGE = "Category created successfully.";
     public static final String SAVE_LOCATION_RESPONSE_MESSAGE = "Location created successfully.";
     public static final String PAGEABLE_FIELD_NAME = "name";
+    public static final String PAGEABLE_FIELD_NAME_DEPARTMENT = "city.department.name";
+    public static final String PAGEABLE_FIELD_NAME_CITY = "city.name";
+    public static final String PAGEABLE_FIELD_NAME_SECTOR = "sector";
 
     //Documentation Swagger
     public static final String CATEGORY_RETRIEVED = "Categories retrieved successfully";

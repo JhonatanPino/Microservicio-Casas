@@ -20,7 +20,7 @@ public class CityEntity {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "department_id", nullable = false)
     private DepartmentEntity department;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)

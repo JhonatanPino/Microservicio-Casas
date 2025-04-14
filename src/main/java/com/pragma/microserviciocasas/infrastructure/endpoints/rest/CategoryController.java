@@ -52,23 +52,3 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.getCategories(page, size, orderAsc));
     }
 }
-
-
-/*
-SaveCategoryResponse es una clase de registro en Java que representa la respuesta devuelta tras guardar una categoría.
- ResponseEntity<SaveCategoryResponse>: El método devuelve una ResponseEntity que contiene un objeto SaveCategoryResponse.
- ResponseEntity se utiliza para representar la respuesta HTTP completa, incluyendo el código de estado, los encabezados y el cuerpo.
- save: El nombre del método.
- @RequestBody SaveCategoryRequest saveCategoryRequest: El método toma un único parámetro, saveCategoryRequest,
- anotado con @RequestBody. Esta anotación indica que el parámetro debe estar vinculado al cuerpo de la solicitud HTTP y
- es de tipo SaveCategoryRequest.
-
- Este método gestiona solicitudes HTTP GET para obtener una lista paginada de categorías.
-@GetMapping("/"): Asigna solicitudes HTTP GET a la URL raíz del controlador (/api/v1/category/).
-public ResponseEntity<PageResult<CategoryResponse>> getAllCategories(...): Define el método getAllCategories, que devuelve
-una ResponseEntity que contiene un PageResult de CategoryResponse.
-@RequestParam Integer page, @RequestParam Integer size, @RequestParam boolean orderAsc: El método toma tres parámetros
- de consulta: page, size y orderAsc.
-return ResponseEntity.ok(categoryService.getCategories(page, size, orderAsc)): Llama al método getCategories de categoryService
-con los parámetros proporcionados y devuelve el resultado envuelto en una ResponseEntity con estado HTTP 200 (OK).
- */

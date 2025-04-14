@@ -1,7 +1,7 @@
 package com.pragma.microserviciocasas.domain.ports.out;
 
-import com.pragma.microserviciocasas.domain.models.CityModel;
 import com.pragma.microserviciocasas.domain.models.LocationModel;
+import com.pragma.microserviciocasas.domain.utils.PageResult;
 
 public interface LocationPersistencePort {
 
@@ -9,5 +9,6 @@ public interface LocationPersistencePort {
 
     void saveLocation(LocationModel locationModel);
 
-    //LocationModel getLocationById(Long id);
+    PageResult<LocationModel> searchLocations(String text, Integer page, Integer size, boolean orderAsc);
+
 }
