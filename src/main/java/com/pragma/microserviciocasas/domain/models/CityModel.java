@@ -21,13 +21,16 @@ public class CityModel {
         if (name.isBlank()){
             throw new EmptyFieldException();
         }
-
         if (description.length() > CITY_FIELD_DESCRIPTION_MAX_SIZE){
             throw new CityDescriptionMaxSizeExceededException();
         }
         if (description.isBlank()){
             throw new EmptyFieldException();
         }
+        if (department == null){
+            throw new EmptyFieldException();
+        }
+
         this.id = id;
         this.name = Objects.requireNonNull(name, DomainConstants.CITY_FIELD_NAME_NULL_MESSAGE);
         this.description = Objects.requireNonNull(description,  DomainConstants.CITY_FIELD_DESCRIPTION_NULL_MESSAGE);
@@ -39,16 +42,15 @@ public class CityModel {
     public Long getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
-
-    public DepartmentModel getDepartment() { return department; }
+    public DepartmentModel getDepartment() {
+        return department;
+    }
 
     public void setName(String name) {
         if (name.length() > CITY_FIELD_NAME_MAX_SIZE){
@@ -59,7 +61,6 @@ public class CityModel {
         }
         this.name = Objects.requireNonNull(name, DomainConstants.CITY_FIELD_NAME_NULL_MESSAGE);
     }
-
     public void setDescription(String description) {
         if (description.length() > CITY_FIELD_DESCRIPTION_MAX_SIZE){
             throw new CityDescriptionMaxSizeExceededException();
@@ -69,11 +70,12 @@ public class CityModel {
         }
         this.description = Objects.requireNonNull(description,  DomainConstants.CITY_FIELD_DESCRIPTION_NULL_MESSAGE);
     }
-
     public void setDepartment(DepartmentModel department) {
+        if (department == null){
+            throw new EmptyFieldException();
+        }
         this.department = Objects.requireNonNull(department, DomainConstants.CITY_FIELD_DEPARTMENT_NULL_MESSAGE);
     }
-
     public void setId(Long id) {
         this.id = id;
     }

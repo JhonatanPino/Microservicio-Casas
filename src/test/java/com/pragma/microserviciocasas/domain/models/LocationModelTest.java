@@ -41,8 +41,10 @@ class LocationModelTest {
 
     @Test
     void constructorShouldThrowExceptionWhenCityIsNull() {
-        assertThrows(NullPointerException.class, () ->
-                new LocationModel(1L, "SectorName", null)
+        String sector = "ValidSector";
+
+        assertThrows(EmptyFieldException.class, () ->
+                new LocationModel(1L, sector, null)
         );
     }
 
@@ -70,6 +72,12 @@ class LocationModelTest {
     }
 
     @Test
+    void setCityShouldThrowExceptionWhenCityIsNull() {
+        LocationModel location = new LocationModel(1L, "SectorName", mock(CityModel.class));
+        assertThrows(EmptyFieldException.class, () -> location.setCity(null));
+    }
+
+    @Test
     void setCityShouldUpdateCitySuccessfully() {
         LocationModel location = new LocationModel(1L, "SectorName", mock(CityModel.class));
         CityModel newCity = mock(CityModel.class);
@@ -80,9 +88,10 @@ class LocationModelTest {
     }
 
     @Test
-    void setCityShouldThrowExceptionWhenCityIsNull() {
+    void setIdShouldUpdateIdSuccessfully() {
         LocationModel location = new LocationModel(1L, "SectorName", mock(CityModel.class));
+        location.setId(2L);
 
-        assertThrows(NullPointerException.class, () -> location.setCity(null));
+        assertEquals(2L, location.getId());
     }
 }

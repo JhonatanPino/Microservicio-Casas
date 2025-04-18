@@ -20,6 +20,9 @@ public class LocationModel {
         if (sector.isBlank()){
             throw new EmptyFieldException();
         }
+        if (city == null){
+            throw new EmptyFieldException();
+        }
 
         this.id = id;
         this.sector = Objects.requireNonNull(sector, LOCATION_FIELD_SECTOR_NULL_MESSAGE);
@@ -29,11 +32,9 @@ public class LocationModel {
     public Long getId() {
         return id;
     }
-
     public String getSector() {
         return sector;
     }
-
     public CityModel getCity() {
         return city;
     }
@@ -47,8 +48,11 @@ public class LocationModel {
         }
         this.sector = Objects.requireNonNull(sector, LOCATION_FIELD_SECTOR_NULL_MESSAGE);
     }
-
     public void setCity(CityModel city) {
+        if (city == null){
+            throw new EmptyFieldException();
+        }
         this.city = Objects.requireNonNull(city, LOCATION_FIELD_CITY_NULL_MESSAGE);
     }
+    public void setId(Long id) { this.id = id; }
 }

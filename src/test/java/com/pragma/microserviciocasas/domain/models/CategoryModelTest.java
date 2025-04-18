@@ -97,4 +97,12 @@ class CategoryModelTest {
         categoryModel.setDescription("NewDescription");
         assertEquals("NewDescription", categoryModel.getDescription());
     }
+
+    @Test
+    void setIdShouldUpdateIdSuccessfully() {
+        CategoryModel category = new CategoryModel(1L, "CategoryName", "CategoryDescription");
+        category.setId(2L);
+
+        assertEquals(2L, category.getId());
+    }
 }

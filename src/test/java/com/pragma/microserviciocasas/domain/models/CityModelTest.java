@@ -62,6 +62,13 @@ class CityModelTest {
     }
 
     @Test
+    void constructorShouldThrowExceptionWhenDepartmentIsNull() {
+        assertThrows(EmptyFieldException.class, () ->
+                new CityModel(1L, "ValidName", "ValidDescription", null)
+        );
+    }
+
+    @Test
     void setNameShouldUpdateNameSuccessfully() {
         CityModel city = new CityModel();
         city.setName("NewName");
@@ -121,6 +128,12 @@ class CityModelTest {
     void setDescriptionShouldThrowExceptionWhenDescriptionIsBlank() {
         CityModel city = new CityModel();
         assertThrows(EmptyFieldException.class, () -> city.setDescription(" "));
+    }
+
+    @Test
+    void setDepartmentShouldThrowExceptionWhenDepartmentIsNull() {
+        CityModel city = new CityModel();
+        assertThrows(EmptyFieldException.class, () -> city.setDepartment(null));
     }
 
 }

@@ -15,13 +15,4 @@ public interface LocationEntityMapper {
 
     List<LocationModel> entityListToModelList(List<LocationEntity> content);
 
-    //List<LocationModel> entityListToModelList(List<LocationEntity> locations);
 }
-
-
-
-/*
-uses: Se utiliza para indicar que LocationEntityMapper debe usar DepartmentEntityMapper para mapear las propiedades
- relacionadas con DepartmentModel y DepartmentEntity.
-Mapeo explícito: Ahora MapStruct sabrá cómo manejar la conversión de DepartmentModel a DepartmentEntity y viceversa.
- */

@@ -20,7 +20,6 @@ public class DepartmentModel {
         if (name.isBlank()){
             throw new EmptyFieldException();
         }
-
         if (description.length() > DEPARTMENT_FIELD_DESCRIPTION_MAX_SIZE){
             throw new DepartmentDescriptionMaxSizeExceededException();
         }
@@ -32,19 +31,15 @@ public class DepartmentModel {
         this.name = Objects.requireNonNull(name, DomainConstants.DEPARTMENT_FIELD_NAME_NULL_MESSAGE);
         this.description = Objects.requireNonNull(description,  DomainConstants.DEPARTMENT_FIELD_DESCRIPTION_NULL_MESSAGE);
     }
-
     public DepartmentModel() {
-
     }
 
     public Long getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
@@ -58,7 +53,6 @@ public class DepartmentModel {
         }
         this.name = Objects.requireNonNull(name, DomainConstants.DEPARTMENT_FIELD_NAME_NULL_MESSAGE);
     }
-
     public void setDescription(String description) {
         if (description.length() > DEPARTMENT_FIELD_DESCRIPTION_MAX_SIZE){
             throw new DepartmentDescriptionMaxSizeExceededException();
@@ -68,8 +62,5 @@ public class DepartmentModel {
         }
         this.description = Objects.requireNonNull(description,  DomainConstants.DEPARTMENT_FIELD_DESCRIPTION_NULL_MESSAGE);
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 }

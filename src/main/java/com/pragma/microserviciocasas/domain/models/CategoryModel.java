@@ -20,7 +20,6 @@ public class CategoryModel {
         if (name.isBlank()){
             throw new EmptyFieldException();
         }
-
         if (description.length() > CATEGORY_FIELD_DESCRIPTION_MAX_SIZE){
             throw new CategoryDescriptionMaxSizeExceededException();
         }
@@ -36,11 +35,9 @@ public class CategoryModel {
     public Long getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
@@ -54,7 +51,6 @@ public class CategoryModel {
         }
         this.name = Objects.requireNonNull(name, DomainConstants.CATEGORY_FIELD_NAME_NULL_MESSAGE);
     }
-
     public void setDescription(String description) {
         if (description.length() > CATEGORY_FIELD_DESCRIPTION_MAX_SIZE){
             throw new CategoryDescriptionMaxSizeExceededException();
@@ -64,6 +60,7 @@ public class CategoryModel {
         }
         this.description = Objects.requireNonNull(description,  DomainConstants.CATEGORY_FIELD_DESCRIPTION_NULL_MESSAGE);
     }
+    public void setId(Long id) { this.id = id; }
 
 }
 

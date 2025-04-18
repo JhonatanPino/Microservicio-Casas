@@ -4,8 +4,6 @@ import com.pragma.microserviciocasas.domain.models.DepartmentModel;
 import com.pragma.microserviciocasas.infrastructure.entities.DepartmentEntity;
 import org.mapstruct.Mapper;
 
-import java.util.List;
-
 @Mapper(componentModel = "spring")
 public interface DepartmentEntityMapper {
 
@@ -13,5 +11,4 @@ public interface DepartmentEntityMapper {
 
     DepartmentModel entityToModel(DepartmentEntity departmentEntity);
 
-    //List<DepartmentModel> entityListToModelList(List<DepartmentEntity> departments);
 }
