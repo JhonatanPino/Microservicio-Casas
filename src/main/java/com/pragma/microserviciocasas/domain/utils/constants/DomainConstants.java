@@ -25,4 +25,16 @@ public class DomainConstants {
     public static final String LOCATION_FIELD_SECTOR_NULL_MESSAGE = "Field 'sector' of location can not be null";
     public static final String LOCATION_FIELD_CITY_NULL_MESSAGE = "Field 'city' of location can not be null";
     public static final Integer LOCATION_FIELD_SECTOR_MAX_SIZE = 60;
+
+    // Home validation messages
+    public static final String HOME_FIELD_NAME_NULL_MESSAGE = "Field 'name' of home can not be null";
+    public static final String HOME_FIELD_DESCRIPTION_NULL_MESSAGE = "Field 'description' of home can not be null";
+    public static final String HOME_FIELD_ROOMS_NULL_MESSAGE = "Field 'rooms' of home can not be null";
+    public static final String HOME_FIELD_BATHROOMS_NULL_MESSAGE = "Field 'bathrooms' of home can not be null";
+    public static final String HOME_FIELD_PRICE_NULL_MESSAGE = "Field 'price' of home can not be null";
+    public static final String HOME_FIELD_PUBLICATION_DATE_NULL_MESSAGE = "Field 'publicationDate' of home can not be null";
+    public static final String HOME_FIELD_PUBLICATION_DATE_ACTIVE_NULL_MESSAGE = "Field 'publicationDateActive' of home can not be null";
+    public static final String HOME_FIELD_STATUS_NULL_MESSAGE = "Field 'status' of home can not be null";
+    public static final String HOME_FIELD_CATEGORY_NULL_MESSAGE = "Field 'category' of home can not be null";
+    public static final String HOME_FIELD_LOCATION_NULL_MESSAGE = "Field 'location' of home can not be null";
 }

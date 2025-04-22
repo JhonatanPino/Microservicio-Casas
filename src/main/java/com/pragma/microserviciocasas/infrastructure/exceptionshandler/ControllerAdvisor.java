@@ -2,7 +2,7 @@ package com.pragma.microserviciocasas.infrastructure.exceptionshandler;
 
 import com.pragma.microserviciocasas.application.exceptionsdto.CityAlreadyExistsException;
 import com.pragma.microserviciocasas.application.exceptionsdto.DepartmentAlreadyExistsException;
-import com.pragma.microserviciocasas.application.exceptionsdto.IdCannotBeNullException;
+import com.pragma.microserviciocasas.domain.exceptions.IdCannotBeNullException;
 import com.pragma.microserviciocasas.domain.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -76,6 +76,18 @@ public class ControllerAdvisor {
                 LocalDateTime.now()));
     }
 
+    // Home
+    @ExceptionHandler(HomeAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleHomeAlreadyExistsException(HomeAlreadyExistsException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.HOME_EXISTS_EXCEPTION,
+                LocalDateTime.now()));
+    }
+    @ExceptionHandler(InvalidPublicationDateActive.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidPublicationDateActive(InvalidPublicationDateActive exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.HOME_PUBLICATION_DATE_ACTIVE_MESSAGE,
+                LocalDateTime.now()));
+    }
+
     // General
     @ExceptionHandler(InvalidPageOrSizeException.class)
     public ResponseEntity<ExceptionResponse> handleInvalidPageOrSize(InvalidPageOrSizeException exception) {
@@ -90,6 +102,11 @@ public class ControllerAdvisor {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ExceptionResponse> handleIllegalArgumentException(IdCannotBeNullException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.ID_CANNOT_BE_NULL_MESSAGE,
+                LocalDateTime.now()));
+    }
+    @ExceptionHandler(InvalidNumberException.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidNumberException(InvalidNumberException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.INVALID_NUMBER_MESSAGE,
                 LocalDateTime.now()));
     }
 

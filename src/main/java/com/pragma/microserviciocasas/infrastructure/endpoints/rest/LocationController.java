@@ -52,7 +52,7 @@ public class LocationController {
             @ApiResponse(responseCode = STATUS_BAD_REQUEST, description = FIELD_CANNOT_EMPTY_MESSAGE,
                     content = @Content(schema = @Schema(implementation = EmptyFieldException.class))),
     })
-    @GetMapping("/search")
+    @GetMapping("/")
     public ResponseEntity <PageResult<LocationResponse>> searchLocations( @RequestParam String text,
                                                                           @RequestParam int page,
                                                                           @RequestParam int size,

@@ -21,8 +21,13 @@ public final class ExceptionConstants {
     public static final String LOCATION_EXISTS_EXCEPTION = "The location already exists";
     public static final String LOCATION_SECTOR_MAX_SIZE_MESSAGE = "The sector of the location can not exceed 60 characters";
 
+    // Home
+    public static final String HOME_EXISTS_EXCEPTION = "The home already exists";
+    public static final String HOME_PUBLICATION_DATE_ACTIVE_MESSAGE = "The publication date active can not be before the publication date";
+
     // General
     public static final String INVALID_PAGE_OR_SIZE = "Page and size must be greater than or equal to 0";
     public static final String FIELD_CANNOT_EMPTY_MESSAGE = "The field cannot be empty";
     public static final String ID_CANNOT_BE_NULL_MESSAGE = "The ID cannot be null";
+    public static final String INVALID_NUMBER_MESSAGE = "The number is invalid";
 }

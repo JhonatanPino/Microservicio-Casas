@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -18,5 +21,8 @@ public class LocationEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id", nullable = false)
     private CityEntity city;
+
+    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    private Set<HomeEntity> homes = new HashSet<>();
 
 }
