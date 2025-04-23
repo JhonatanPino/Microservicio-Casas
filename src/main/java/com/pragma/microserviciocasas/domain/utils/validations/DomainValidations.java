@@ -11,6 +11,9 @@ import com.pragma.microserviciocasas.domain.utils.enumerations.PublicationStatus
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static com.pragma.microserviciocasas.domain.utils.constants.DomainConstants.HOME_FIELD_NUMBER_MIN;
+import static com.pragma.microserviciocasas.domain.utils.constants.DomainConstants.HOME_PUBLISHED_ACTIVE_MAX_DAYS;
+
 public class DomainValidations {
 
     public static void isNullOrBlankValidationC(Long id, String name, String description, Integer rooms, Integer bathrooms,
@@ -70,13 +73,17 @@ public class DomainValidations {
         if (!isValid) {
             throw new InvalidNumberException();
         }
-
+        if (Double.parseDouble(number) <= HOME_FIELD_NUMBER_MIN) {
+            throw new InvalidNumberException();
+        }
     }
 
-    // Validation for publication date
+    // Validation for publication date active
     public static void isValidPublicationDateActiveValidation(LocalDate publicationDateActive, LocalDate publicationDate) {
-        boolean isValidDate = publicationDateActive.isAfter(publicationDate);
-        if (!isValidDate) {
+        if (publicationDateActive.isBefore(publicationDate)) {
+            throw new InvalidPublicationDateActive();
+        }
+        if (publicationDateActive.isAfter(publicationDate.plusDays(HOME_PUBLISHED_ACTIVE_MAX_DAYS))) {
             throw new InvalidPublicationDateActive();
         }
     }

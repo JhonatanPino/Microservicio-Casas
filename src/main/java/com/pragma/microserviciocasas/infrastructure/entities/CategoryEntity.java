@@ -17,6 +17,6 @@ public class CategoryEntity {
     private String description;
 
     @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
-    private HomeEntity home;
+    private HomeEntity homeEntity;
 
 }

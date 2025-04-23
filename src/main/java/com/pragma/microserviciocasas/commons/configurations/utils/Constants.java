@@ -5,6 +5,7 @@ public final class Constants {
     //General
     public static final String SAVE_CATEGORY_RESPONSE_MESSAGE = "Category created successfully.";
     public static final String SAVE_LOCATION_RESPONSE_MESSAGE = "Location created successfully.";
+    public static final String PUBLISH_HOME_RESPONSE_MESSAGE = "Home published successfully.";
     public static final String PAGEABLE_FIELD_NAME = "name";
     public static final String PAGEABLE_FIELD_NAME_DEPARTMENT = "city.department.name";
     public static final String PAGEABLE_FIELD_NAME_CITY = "city.name";
@@ -16,5 +17,6 @@ public final class Constants {
     public static final String STATUS_CREATE = "201";
     public static final String STATUS_OK = "200";
     public static final String STATUS_BAD_REQUEST = "400";
+
 
 }

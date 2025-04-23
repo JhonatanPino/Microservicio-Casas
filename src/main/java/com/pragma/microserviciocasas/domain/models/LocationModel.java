@@ -28,6 +28,8 @@ public class LocationModel {
         this.sector = Objects.requireNonNull(sector, LOCATION_FIELD_SECTOR_NULL_MESSAGE);
         this.city = Objects.requireNonNull(city, LOCATION_FIELD_CITY_NULL_MESSAGE);
     }
+    public LocationModel() {
+    }
 
     public Long getId() {
         return id;
@@ -55,4 +57,8 @@ public class LocationModel {
         this.city = Objects.requireNonNull(city, LOCATION_FIELD_CITY_NULL_MESSAGE);
     }
     public void setId(Long id) { this.id = id; }
+
+    public Object getDepartment() {
+        return null;
+    }
 }

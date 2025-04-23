@@ -1,16 +1,22 @@
 package com.pragma.microserviciocasas.commons.configurations.beans;
 
 import com.pragma.microserviciocasas.domain.ports.in.CategoryServicePort;
+import com.pragma.microserviciocasas.domain.ports.in.HomeServicePort;
 import com.pragma.microserviciocasas.domain.ports.in.LocationServicePort;
 import com.pragma.microserviciocasas.domain.ports.out.CategoryPersistencePort;
+import com.pragma.microserviciocasas.domain.ports.out.HomePersistencePort;
 import com.pragma.microserviciocasas.domain.ports.out.LocationPersistencePort;
 import com.pragma.microserviciocasas.domain.usecases.CategoryUseCase;
+import com.pragma.microserviciocasas.domain.usecases.HomeUseCase;
 import com.pragma.microserviciocasas.domain.usecases.LocationUseCase;
 import com.pragma.microserviciocasas.infrastructure.adapters.persistence.CategoryPersistenceAdapter;
+import com.pragma.microserviciocasas.infrastructure.adapters.persistence.HomePersistenceAdapter;
 import com.pragma.microserviciocasas.infrastructure.adapters.persistence.LocationPersistenceAdapter;
 import com.pragma.microserviciocasas.infrastructure.mappers.CategoryEntityMapper;
+import com.pragma.microserviciocasas.infrastructure.mappers.HomeEntityMapper;
 import com.pragma.microserviciocasas.infrastructure.mappers.LocationEntityMapper;
 import com.pragma.microserviciocasas.infrastructure.repositories.mysql.CategoryRepository;
+import com.pragma.microserviciocasas.infrastructure.repositories.mysql.HomeRepository;
 import com.pragma.microserviciocasas.infrastructure.repositories.mysql.LocationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +29,8 @@ public class BeanConfiguration {
     private final CategoryEntityMapper categoryEntityMapper;
     private final LocationRepository locationRepository;
     private final LocationEntityMapper locationEntityMapper;
+    private final HomeRepository homeRepository;
+    private final HomeEntityMapper homeEntityMapper;
 
     // Category
     @Bean
@@ -42,6 +50,15 @@ public class BeanConfiguration {
     @Bean
     public LocationPersistencePort locationPersistencePort() {
         return new LocationPersistenceAdapter(locationRepository, locationEntityMapper);
+    }
+
+    // Home
+    @Bean
+    public HomeServicePort homeServicePort() { return new HomeUseCase(homePersistencePort()); }
+
+    @Bean
+    public HomePersistencePort homePersistencePort() {
+        return new HomePersistenceAdapter(homeRepository, homeEntityMapper);
     }
 
 }

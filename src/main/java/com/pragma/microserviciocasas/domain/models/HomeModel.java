@@ -46,6 +46,10 @@ public class HomeModel {
         this.category = Objects.requireNonNull(category, DomainConstants.HOME_FIELD_CATEGORY_NULL_MESSAGE);
         this.location = Objects.requireNonNull(location, DomainConstants.HOME_FIELD_LOCATION_NULL_MESSAGE);
     }
+    public HomeModel(){
+    }
+    public HomeModel(Long id, String name, CategoryModel category, LocationModel location) {
+    }
 
     public Long getId() {
         return id;

@@ -37,5 +37,12 @@ public class SwaggerConfig {
                 .build();
     }
 
+    @Bean
+    public GroupedOpenApi homeApi() {
+        return GroupedOpenApi.builder().group("homes")
+                .packagesToScan("com.pragma.microserviciocasas.infrastructure.endpoints.rest") // Escanea el paquete de HomeController
+                .build();
+    }
+
 
 }

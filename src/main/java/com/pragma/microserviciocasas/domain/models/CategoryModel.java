@@ -31,6 +31,8 @@ public class CategoryModel {
         this.name = Objects.requireNonNull(name, DomainConstants.CATEGORY_FIELD_NAME_NULL_MESSAGE);
         this.description = Objects.requireNonNull(description,  DomainConstants.CATEGORY_FIELD_DESCRIPTION_NULL_MESSAGE);
     }
+    public CategoryModel() {
+    }
 
     public Long getId() {
         return id;

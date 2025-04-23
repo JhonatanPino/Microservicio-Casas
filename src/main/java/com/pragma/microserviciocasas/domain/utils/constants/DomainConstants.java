@@ -37,4 +37,6 @@ public class DomainConstants {
     public static final String HOME_FIELD_STATUS_NULL_MESSAGE = "Field 'status' of home can not be null";
     public static final String HOME_FIELD_CATEGORY_NULL_MESSAGE = "Field 'category' of home can not be null";
     public static final String HOME_FIELD_LOCATION_NULL_MESSAGE = "Field 'location' of home can not be null";
+    public static final Integer HOME_PUBLISHED_ACTIVE_MAX_DAYS = 30;
+    public static final Integer HOME_FIELD_NUMBER_MIN = 0;
 }
