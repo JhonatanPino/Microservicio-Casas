@@ -21,8 +21,7 @@ public class HomeUseCase implements HomeServicePort {
             throw new HomeAlreadyExistsException();
         }
 
-        if (homeModel.getPublicationDateActive() != null &&
-                homeModel.getPublicationDateActive().isEqual(homeModel.getPublicationDate())) {
+        if (homeModel.getPublicationDateActive() != null && homeModel.getPublicationDateActive().isEqual(homeModel.getPublicationDate())) {
             homeModel.setStatus(PublicationStatus.PUBLISHED);
         } else {
             homeModel.setStatus(PublicationStatus.PUBLICATION_PAUSED);
