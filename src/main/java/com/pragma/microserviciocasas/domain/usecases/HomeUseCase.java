@@ -22,7 +22,7 @@ public class HomeUseCase implements HomeServicePort {
         }
 
         if (homeModel.getPublicationDateActive() != null &&
-                homeModel.getPublicationDateActive().isEqual(java.time.LocalDate.now())) {
+                homeModel.getPublicationDateActive().isEqual(homeModel.getPublicationDate())) {
             homeModel.setStatus(PublicationStatus.PUBLISHED);
         } else {
             homeModel.setStatus(PublicationStatus.PUBLICATION_PAUSED);

@@ -24,9 +24,10 @@ public class HomeEntity {
     private BigDecimal price;
     private LocalDate publicationDate;
     private LocalDate publicationDateActive;
+    @Enumerated(EnumType.STRING)
     private PublicationStatus status;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private CategoryEntity category;
 
@@ -35,12 +36,3 @@ public class HomeEntity {
     private LocationEntity location;
 
 }
-/*
--cada casa tiene los sigueintes campos:id,nombre, descripcion,
- cantidad de cuartos, cantidad de baños, precio,
- Categoria de inmueble, ubicación (sector, ciudad y departamento),
-  fecha de publicación activa (los usuarios solo podran ver la casa, cuando se lista despues de la fecha de publicación,
-   esta fecha no puede exeder un mes de la fecha actual),
-    estado de la publicación (PUBLICADA, PUBLICACION_PAUSADA,TRASACCION_CURSO, TRANSACCION_FINALIZADA),
-     fecha de la publicación
- */

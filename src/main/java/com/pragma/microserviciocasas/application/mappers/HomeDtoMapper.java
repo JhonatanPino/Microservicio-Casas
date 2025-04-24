@@ -12,7 +12,7 @@ public interface HomeDtoMapper {
 
     @Mapping(target = "location.id", source = "idLocation")
     @Mapping(target = "category.id", source = "idCategory")
-    HomeModel requestToModel(PublishHomeRequest request);
+    HomeModel requestToModel(PublishHomeRequest publishHomeRequest);
 
 
     @Mapping(source = "category.name", target = "categoryName")

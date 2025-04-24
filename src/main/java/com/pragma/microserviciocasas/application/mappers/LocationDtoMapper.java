@@ -14,6 +14,7 @@ public interface LocationDtoMapper {
     @Mapping(target = "city.id", source = "idCity")
     LocationModel requestToModel(SaveLocationRequest saveLocationRequest);
 
+
     @Mapping(source = "city.name", target = "cityName")
     @Mapping(source = "city.department.name", target = "departmentName")
     LocationResponse modelToResponse(LocationModel locationModel);
