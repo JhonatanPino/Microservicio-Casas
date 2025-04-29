@@ -8,5 +8,6 @@ public interface HomePersistencePort {
 
     void publishHome(HomeModel homeModel);
 
+    void updateStatusToPublishedIfActiveDateReached();
 
 }

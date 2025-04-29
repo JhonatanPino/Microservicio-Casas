@@ -61,4 +61,10 @@ public class BeanConfiguration {
         return new HomePersistenceAdapter(homeRepository, homeEntityMapper);
     }
 
+    @Bean
+    public HomeUseCase homeUseCase(HomePersistencePort homePersistencePort) {
+        return new HomeUseCase(homePersistencePort);
+    }
+
+
 }

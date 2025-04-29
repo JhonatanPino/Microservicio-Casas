@@ -29,4 +29,8 @@ public class HomeUseCase implements HomeServicePort {
 
         homePersistencePort.publishHome(homeModel);
     }
+
+    public void updateHomesStatus() {
+        homePersistencePort.updateStatusToPublishedIfActiveDateReached();
+    }
 }

@@ -82,8 +82,8 @@ public class ControllerAdvisor {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.HOME_EXISTS_EXCEPTION,
                 LocalDateTime.now()));
     }
-    @ExceptionHandler(InvalidPublicationDateActive.class)
-    public ResponseEntity<ExceptionResponse> handleInvalidPublicationDateActive(InvalidPublicationDateActive exception) {
+    @ExceptionHandler(InvalidPublicationDateActiveException.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidPublicationDateActive(InvalidPublicationDateActiveException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.HOME_PUBLICATION_DATE_ACTIVE_MESSAGE,
                 LocalDateTime.now()));
     }

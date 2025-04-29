@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -23,6 +25,11 @@ public class HomePersistenceAdapter implements HomePersistencePort {
     @Override
     public boolean existsByNameAndLocationId(String name, Long idLocation) {
         return homeRepository.existsByNameAndLocationId(name, idLocation);
+    }
+
+    @Override
+    public void updateStatusToPublishedIfActiveDateReached() {
+        homeRepository.updateStatusToPublishedIfActiveDateReached(LocalDate.now());
     }
 
 }

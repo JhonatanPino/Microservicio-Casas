@@ -3,7 +3,7 @@ package com.pragma.microserviciocasas.domain.utils.validations;
 import com.pragma.microserviciocasas.domain.exceptions.IdCannotBeNullException;
 import com.pragma.microserviciocasas.domain.exceptions.EmptyFieldException;
 import com.pragma.microserviciocasas.domain.exceptions.InvalidNumberException;
-import com.pragma.microserviciocasas.domain.exceptions.InvalidPublicationDateActive;
+import com.pragma.microserviciocasas.domain.exceptions.InvalidPublicationDateActiveException;
 import com.pragma.microserviciocasas.domain.models.CategoryModel;
 import com.pragma.microserviciocasas.domain.models.LocationModel;
 import com.pragma.microserviciocasas.domain.utils.enumerations.PublicationStatus;
@@ -81,10 +81,10 @@ public class DomainValidations {
     // Validation for publication date active
     public static void isValidPublicationDateActiveValidation(LocalDate publicationDateActive, LocalDate publicationDate) {
         if (publicationDateActive.isBefore(publicationDate)) {
-            throw new InvalidPublicationDateActive();
+            throw new InvalidPublicationDateActiveException();
         }
         if (publicationDateActive.isAfter(publicationDate.plusDays(HOME_PUBLISHED_ACTIVE_MAX_DAYS))) {
-            throw new InvalidPublicationDateActive();
+            throw new InvalidPublicationDateActiveException();
         }
     }
 }

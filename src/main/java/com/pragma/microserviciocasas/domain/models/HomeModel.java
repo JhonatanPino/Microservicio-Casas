@@ -48,8 +48,6 @@ public class HomeModel {
     }
     public HomeModel(){
     }
-    public HomeModel(Long id, String name, CategoryModel category, LocationModel location) {
-    }
 
     public Long getId() {
         return id;
@@ -99,34 +97,34 @@ public class HomeModel {
     }
     public void setRooms(Integer rooms) {
         isNullOrBlankValidationS(rooms);
-        this.rooms = rooms;
+        this.rooms = Objects.requireNonNull(rooms, DomainConstants.HOME_FIELD_ROOMS_NULL_MESSAGE);
     }
     public void setBathrooms(Integer bathrooms) {
         isNullOrBlankValidationS(bathrooms);
-        this.bathrooms = bathrooms;
+        this.bathrooms = Objects.requireNonNull(bathrooms, DomainConstants.HOME_FIELD_BATHROOMS_NULL_MESSAGE);
     }
     public void setPrice(BigDecimal price) {
         isNullOrBlankValidationS(price);
-        this.price = price;
+        this.price = Objects.requireNonNull(price, DomainConstants.HOME_FIELD_PRICE_NULL_MESSAGE);
     }
     public void setPublicationDate(LocalDate publicationDate) {
         isNullOrBlankValidationS(publicationDate);
-        this.publicationDate = publicationDate;
+        this.publicationDate = Objects.requireNonNull(publicationDate, DomainConstants.HOME_FIELD_PUBLICATION_DATE_NULL_MESSAGE);
     }
     public void setPublicationDateActive(LocalDate publicationDateActive) {
         isNullOrBlankValidationS(publicationDateActive);
-        this.publicationDateActive = publicationDateActive;
+        this.publicationDateActive = Objects.requireNonNull(publicationDateActive, DomainConstants.HOME_FIELD_PUBLICATION_DATE_ACTIVE_NULL_MESSAGE);
     }
     public void setStatus(PublicationStatus status) {
         isNullOrBlankValidationS(status);
-        this.status = status;
+        this.status = Objects.requireNonNull(status, DomainConstants.HOME_FIELD_STATUS_NULL_MESSAGE);
     }
     public void setCategory(CategoryModel category) {
         isNullOrBlankValidationI(category);
-        this.category = category;
+        this.category = Objects.requireNonNull(category, DomainConstants.HOME_FIELD_CATEGORY_NULL_MESSAGE);
     }
     public void setLocation(LocationModel location) {
         isNullOrBlankValidationI(location);
-        this.location = location;
+        this.location = Objects.requireNonNull(location, DomainConstants.HOME_FIELD_LOCATION_NULL_MESSAGE);
     }
 }

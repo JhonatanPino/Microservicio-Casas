@@ -11,6 +11,9 @@ public record PublishHomeRequest(String name, String description, Integer rooms,
     public PublishHomeRequest {
         isNullOrBlankValidationS(name);
         isNullOrBlankValidationS(description);
+        isNullOrBlankValidationS(rooms);
+        isNullOrBlankValidationS(bathrooms);
+        isNullOrBlankValidationS(price);
         isNullOrBlankValidationS(publicationDate);
         isNullOrBlankValidationS(publicationDateActive);
         isNullOrBlankValidationS(idCategory);
