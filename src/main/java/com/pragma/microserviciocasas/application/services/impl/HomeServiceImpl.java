@@ -1,11 +1,13 @@
 package com.pragma.microserviciocasas.application.services.impl;
 
 import com.pragma.microserviciocasas.application.dto.request.PublishHomeRequest;
+import com.pragma.microserviciocasas.application.dto.response.HomeResponse;
 import com.pragma.microserviciocasas.application.dto.response.SaveHomeResponse;
 import com.pragma.microserviciocasas.application.mappers.HomeDtoMapper;
 import com.pragma.microserviciocasas.application.services.HomeService;
 import com.pragma.microserviciocasas.commons.configurations.utils.Constants;
 import com.pragma.microserviciocasas.domain.ports.in.HomeServicePort;
+import com.pragma.microserviciocasas.domain.utils.PageResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class HomeServiceImpl implements HomeService {
     public SaveHomeResponse publisHome(PublishHomeRequest request) {
         homeServicePort.publishHome(homeDtoMapper.requestToModel(request));
         return new SaveHomeResponse(Constants.PUBLISH_HOME_RESPONSE_MESSAGE, LocalDateTime.now());
+    }
+
+    @Override
+    public PageResult<HomeResponse> searchHomes(String text, Integer page, Integer size, boolean orderAsc) {
+        return homeDtoMapper.modelListToResponseList(homeServicePort.searchHomes(text, page, size, orderAsc));
     }
 
 }

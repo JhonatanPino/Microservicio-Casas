@@ -1,9 +1,12 @@
 package com.pragma.microserviciocasas.infrastructure.endpoints.rest;
 
 import com.pragma.microserviciocasas.application.dto.request.PublishHomeRequest;
+import com.pragma.microserviciocasas.application.dto.response.HomeResponse;
 import com.pragma.microserviciocasas.application.dto.response.SaveHomeResponse;
 import com.pragma.microserviciocasas.application.services.HomeService;
 import com.pragma.microserviciocasas.domain.exceptions.*;
+import com.pragma.microserviciocasas.domain.utils.PageResult;
+import com.pragma.microserviciocasas.infrastructure.entities.HomeEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,10 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.*;
 import static com.pragma.microserviciocasas.commons.configurations.utils.Constants.STATUS_BAD_REQUEST;
@@ -43,5 +43,14 @@ public class HomeController {
     @PostMapping("/")
     public ResponseEntity<SaveHomeResponse> publisHome(@RequestBody PublishHomeRequest publishHomeRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(homeService.publisHome(publishHomeRequest));
+    }
+
+    @Operation(summary = "Search homes for sector, category, rooms, bathrooms or price")
+    @GetMapping("/")
+    public ResponseEntity<PageResult<HomeResponse>> searchHomes(@RequestParam String text,
+                                                                @RequestParam int page,
+                                                                @RequestParam int size,
+                                                                @RequestParam boolean orderAsc) {
+        return ResponseEntity.ok(homeService.searchHomes(text, page, size, orderAsc));
     }
 }

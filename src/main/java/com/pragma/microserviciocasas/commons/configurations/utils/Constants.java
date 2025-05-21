@@ -10,6 +10,7 @@ public final class Constants {
     public static final String PAGEABLE_FIELD_NAME_DEPARTMENT = "city.department.name";
     public static final String PAGEABLE_FIELD_NAME_CITY = "city.name";
     public static final String PAGEABLE_FIELD_NAME_SECTOR = "sector";
+    //public static final String PAGEABLE_FIELD_NAME_HOME = "home.name";
 
     //Documentation Swagger
     public static final String CATEGORY_RETRIEVED = "Categories retrieved successfully";

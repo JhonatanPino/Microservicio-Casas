@@ -99,8 +99,8 @@ public class ControllerAdvisor {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.FIELD_CANNOT_EMPTY_MESSAGE,
                 LocalDateTime.now()));
     }
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ExceptionResponse> handleIllegalArgumentException(IdCannotBeNullException exception) {
+    @ExceptionHandler(IdCannotBeNullException.class)
+    public ResponseEntity<ExceptionResponse> handleIdCannotBeNullException(IdCannotBeNullException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.ID_CANNOT_BE_NULL_MESSAGE,
                 LocalDateTime.now()));
     }
