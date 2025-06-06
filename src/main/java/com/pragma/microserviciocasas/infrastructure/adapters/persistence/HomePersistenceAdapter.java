@@ -1,6 +1,5 @@
 package com.pragma.microserviciocasas.infrastructure.adapters.persistence;
 
-import com.pragma.microserviciocasas.commons.configurations.utils.Constants;
 import com.pragma.microserviciocasas.domain.models.HomeModel;
 import com.pragma.microserviciocasas.domain.ports.out.HomePersistencePort;
 import com.pragma.microserviciocasas.domain.utils.PageResult;

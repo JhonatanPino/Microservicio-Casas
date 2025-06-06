@@ -11,14 +11,13 @@ import org.springframework.stereotype.Component;
 public class HomeStatusScheluder {
     private final HomeUseCase homeUseCase;
 
-    /*@Scheduled(cron = "0 0 0 * * ?")
-    public void updateHomeStatuses() {
-        homeUseCase.updateHomesStatus();
-    }*/
-
     @EventListener(ContextRefreshedEvent.class)
     public void updateHomeStatusesOnStartup() {
         homeUseCase.updateHomesStatus();
     }
 
 }
+ /*@Scheduled(cron = "0 0 0 * * ?")
+    public void updateHomeStatuses() {
+        homeUseCase.updateHomesStatus();
+    }*/

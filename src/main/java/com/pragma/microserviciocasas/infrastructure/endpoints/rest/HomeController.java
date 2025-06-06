@@ -22,7 +22,7 @@ import static com.pragma.microserviciocasas.commons.configurations.utils.Constan
 import static com.pragma.microserviciocasas.infrastructure.exceptionshandler.ExceptionConstants.*;
 
 @RestController
-@RequestMapping("/api/v1/lhomes")
+@RequestMapping("/api/v1/homes")
 @RequiredArgsConstructor
 public class HomeController {
     private final HomeService homeService;
