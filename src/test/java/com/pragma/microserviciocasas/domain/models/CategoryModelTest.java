@@ -105,4 +105,13 @@ class CategoryModelTest {
 
         assertEquals(2L, category.getId());
     }
+
+    @Test
+    void testDefaultConstructor() {
+        CategoryModel categoryModel = new CategoryModel();
+
+        assertNull(categoryModel.getId());
+        assertNull(categoryModel.getName());
+        assertNull(categoryModel.getDescription());
+    }
 }

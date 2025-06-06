@@ -94,4 +94,19 @@ class LocationModelTest {
 
         assertEquals(2L, location.getId());
     }
+
+    @Test
+    void defaultConstructorShouldInitializeFieldsToNull() {
+        LocationModel location = new LocationModel();
+
+        assertNull(location.getId());
+        assertNull(location.getSector());
+        assertNull(location.getCity());
+    }
+
+    @Test
+    void getDepartmentShouldReturnNull() {
+        LocationModel location = new LocationModel();
+        assertNull(location.getDepartment());
+    }
 }

@@ -42,4 +42,17 @@ public class PageResult<T> {
     public int getTotalPages() {
         return totalPages;
     }
+
+    public void setContent(List<Object> objects) {
+    }
+
+    public void setPage(int i) {
+    }
+
+    public void setSize(int i) {
+    }
+
+    public void setTotalElements(int i) {
+
+    }
 }
